@@ -7,7 +7,7 @@ import { Users, User, Play, Crown } from 'lucide-react'
 export default function Lobby() {
   const { code } = useParams()
   const navigate = useNavigate()
-  const { profile, currentRoom, isHost, setRoom } = useGameStore()
+  const { isHost, setRoom } = useGameStore()
   
   const [players, setPlayers] = useState<any[]>([])
   const [roomData, setRoomData] = useState<any>(null)
@@ -53,7 +53,7 @@ export default function Lobby() {
 
     // Realtime subscriptions
     const channel = supabase.channel(`room_${code}`)
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'players' }, payload => {
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'players' }, _payload => {
         // Simple reload for now, optimize later
         fetchRoom() 
       })

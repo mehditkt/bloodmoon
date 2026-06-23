@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Moon, Play, Users, User, Trophy, Settings, ChevronRight, ChevronLeft } from 'lucide-react'
+import { Moon, Play, Users, ChevronRight, ChevronLeft } from 'lucide-react'
 import { supabase } from '../lib/supabase'
-import { useGameStore, PlayerProfile } from '../store/useGameStore'
-import Avatar, { AvatarOptions } from '../components/Avatar'
+import { useGameStore } from '../store/useGameStore'
+import type { PlayerProfile } from '../store/useGameStore'
+import Avatar from '../components/Avatar'
+import type { AvatarOptions } from '../components/Avatar'
 
 const skinOptions: AvatarOptions['skin'][] = ['light', 'tan', 'dark', 'zombie']
 const hairOptions: AvatarOptions['hair'][] = ['short_brown', 'long_blonde', 'spiky_black', 'bald']

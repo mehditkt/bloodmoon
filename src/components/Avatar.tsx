@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 export interface AvatarOptions {
   skin: 'light' | 'tan' | 'dark' | 'zombie';
