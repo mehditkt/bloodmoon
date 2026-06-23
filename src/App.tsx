@@ -11,7 +11,10 @@ function App() {
     const initAuth = async () => {
       const { data } = await supabase.auth.getSession()
       if (!data.session) {
-        await supabase.auth.signInAnonymously()
+        const { error } = await supabase.auth.signInAnonymously()
+        if (error) {
+          console.error("Erreur d'authentification anonyme:", error.message)
+        }
       }
     }
     initAuth()

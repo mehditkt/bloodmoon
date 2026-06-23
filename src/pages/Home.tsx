@@ -45,8 +45,12 @@ export default function Home() {
   const saveProfile = async () => {
     if (!username.trim()) return alert("Veuillez entrer un pseudo.")
     setIsSaving(true)
-    const { data: { session } } = await supabase.auth.getSession()
-    if (!session) return alert("Erreur d'authentification.")
+    const { data: { session }, error: sessionError } = await supabase.auth.getSession()
+    
+    if (!session) {
+      setIsSaving(false)
+      return alert("Erreur d'authentification. Avez-vous activé 'Anonymous Sign-in' dans Supabase, et ajouté les clés secrètes sur GitHub ?")
+    }
 
     const newProfile = {
       id: session.user.id,
