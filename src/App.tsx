@@ -18,7 +18,7 @@ function App() {
   }, [])
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <div className="min-h-screen bg-bloodmoon-dark text-white font-sans selection:bg-bloodmoon-purple selection:text-white">
         <Routes>
           <Route path="/" element={<Home />} />
